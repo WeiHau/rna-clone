@@ -1,13 +1,13 @@
 {
   "expo": {
-    "name": "rna-clone",
+    "name": "Kitsu-Anime",
     "slug": "rna-clone",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
-      "resizeMode": "contain",
+      "resizeMode": "cover",
       "backgroundColor": "#ffffff"
     },
     "updates": {
@@ -21,6 +21,9 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "android": {
+      "package": "kitsu.anime"
     }
   }
 }

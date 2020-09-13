@@ -1,21 +1,36 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import {
+  CardStyleInterpolators, //https://stackoverflow.com/questions/48018666/how-to-change-the-direction-of-the-animation-in-stacknavigator
+  createStackNavigator, //https://reactnavigation.org/docs/stack-navigator/
+} from "@react-navigation/stack";
+// Redux
+import { Provider } from "react-redux";
+import store from "./redux/store";
+
+//import TempComponent from "./TempComponent";
+
+// pages
+import home from "./pages/home";
+import anime from "./pages/anime";
+
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Provider store={store}>
+      <NavigationContainer>
+        <Stack.Navigator
+          initialRouteName="Home"
+          headerMode="none"
+          screenOptions={{
+            cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+          }}
+        >
+          <Stack.Screen name="Home" component={home} />
+          <Stack.Screen name="Anime" component={anime} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
